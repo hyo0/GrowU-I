@@ -1,0 +1,46 @@
+package kc.ac.halla.h02404.lecture01;
+
+import java.util.*;
+import java.awt.*;
+import javax.swing.*;
+
+public class Time {
+	public static void main(String[] args) {
+
+		int year, month, day, hour, min, second;
+		String result;
+		
+		JFrame frame = new JFrame("디지털 시계");//프레임 생성
+		JLabel label = new JLabel();//라벨 추가
+		Font font = new Font("궁서", Font.BOLD, 40);//창의 글자 유형을 지정
+		
+		frame.setLocation(200, 200);//파일을 실행했을 때 창을 띄울 위치를 지정 (첫 번째 값이 x축이고 두 번째 값이 y축)
+		frame.setSize(1000, 250);//창의 크기 설정
+		frame.add(label);//프레임 안에 라벨을 추가
+		frame.setVisible(true);//창 띄우기
+		
+		label.setFont(font);//미리 만들어 놓은 글자 유형을 label에 적용
+		label.setForeground(Color.CYAN);//글자 색상을 CYAN으로 설정
+		label.setBackground(Color.BLACK);//배경 색상을 BLACK으로 설정
+		label.setVerticalAlignment(SwingConstants.CENTER);//label의 수직 위치를 설정
+		label.setHorizontalAlignment(SwingConstants.CENTER);//label의 수평 위치를 설정
+		label.setOpaque(true);//설정해둔 것들을 불투명하게 한다. (※이것을 쓰지 않으면 설정해도 적용되지 않는다)
+		
+		while (true) {  
+			Calendar calendar = Calendar.getInstance();
+			year = calendar.get(Calendar.YEAR);
+			month = calendar.get(Calendar.MONTH)+1;
+			day = calendar.get(Calendar.DAY_OF_MONTH);
+			hour = calendar.get(Calendar.HOUR_OF_DAY);  
+			min = calendar.get(Calendar.MINUTE);  
+			second = calendar.get(Calendar.SECOND);
+			result = (year+"년 "+month+"월 "+day+"일 "+hour+"시 "+min+"분 "+second+"초 입니다.");
+			label.setText(result);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {	
+				continue;
+			}  
+		}  
+	}
+}
